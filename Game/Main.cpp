@@ -23,7 +23,13 @@ int main(int, char**)
 	scene.Create(&engine);
 	scene.Read(document);
 
-
+	for (size_t i = 0; i < 10; i++)
+	{
+		nc::GameObject* gameObject = nc::ObjectFactory::Instance().Create<nc::GameObject>("SparklePro");
+		gameObject->m_transform.angle = nc::random(0, 360);
+		gameObject->m_transform.position = nc::Vector2{ nc::random(0, 600), nc::random(0,600) };
+		scene.AddGameObject(gameObject);
+	}
 
 	SDL_Event event;
 	bool quit = false;

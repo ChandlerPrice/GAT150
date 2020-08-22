@@ -11,6 +11,9 @@ namespace nc
 	class GameObject : public Object
 	{
 	public:
+		GameObject() = default;
+		GameObject(const GameObject& other);
+
 		virtual bool Create(void* data = nullptr) override;
 		virtual void Destroy() override;
 		virtual Object* Clone() override { return new GameObject{*this}; }
