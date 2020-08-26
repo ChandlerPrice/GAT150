@@ -3,11 +3,14 @@
       {
          "type":"GameObject",
          "name":"SparklePro",
+	 "tag":"FX",
+	 "transient":true,
+	 "lifetime":1.5,
          "position":[
             640,
             345
          ],
-         "scale":0.5,
+         "scale":1,
          "angle":0,
          "Components":[
             {
@@ -28,22 +31,26 @@
    "GameObjects":[
       {
          "type":"GameObject",
-         "name":"Background",
+         "name":"Ground",
          "position":[
             640,
-            360
+            660
          ],
-         "scale":0.335,
+         "scale":1,
          "angle":0,
          "Components":[
             {
                "type":"SpriteComponent",
                "texture":"2DMap.png",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
                "rect":[
                   0,
                   0,
-                  3840,
-                  2160
+                  800,
+                  32
                ]
             }
          ]
@@ -51,58 +58,60 @@
       {
          "type":"GameObject",
          "name":"Player",
+	 "tag":"Player",
          "position":[
             640,
             360
          ],
-         "scale":0.05,
+         "scale":1,
          "angle":0,
          "Components":[
             {
-               "type":"PhysicsComponent"
+               "type":"RigidBodyComponent",
+		"isDynamic":true,
+		"lockAngle":true,
+		"size":[16, 32],
+		"density":1.0,
+		"friction":1.0
             },
             {
                "type":"PlayerComponent"
             },
             {
                "type":"SpriteComponent",
+               "texture":"player.png",
                "origin":[
                   0.5,
                   0.5
                ],
-               "texture":"character.png",
                "rect":[
                   0,
                   0,
-                  400,
-                  400
+                  32,
+                  64
                ]
             }
          ]
       },
       {
-         "type":"GameObject",
+         "type":"SparklePro",
          "name":"Sparkle",
          "position":[
             640,
-            345
+            445
+         ],
+         "scale":1,
+         "angle":0
+      },
+      {
+         "type":"SparklePro",
+         "name":"Sparkle",
+         "position":[
+            640,
+            545
          ],
          "scale":0.5,
-         "angle":0,
-         "Components":[
-            {
-               "type":"SpriteAnimationComponent",
-               "origin":[
-                  0.5,
-                  0.5
-               ],
-               "texture":"sparkle.png",
-               "numX":8,
-               "numY":8,
-               "numFrames":64,
-               "fps":30
-            }
-         ]
+         "angle":0
       }
    ]
 }

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PlayerComponent.h"
 #include "Components/PhysicsComponent.h"
+#include "Components/RigidBodyComponent.h"
 
 namespace nc
 {
@@ -35,27 +36,28 @@ namespace nc
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_A) == nc::InputSystem::eButtonState::HELD)
 		{
-			m_owner->m_transform.position.x = m_owner->m_transform.position.x - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.x = -20000000000;
+			//m_owner->m_transform.position.x = m_owner->m_transform.position.x - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_D) == nc::InputSystem::eButtonState::HELD)
 		{
-			m_owner->m_transform.position.x = m_owner->m_transform.position.x + 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.x = 20000000000;
+			//m_owner->m_transform.position.x = m_owner->m_transform.position.x + 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_W) == nc::InputSystem::eButtonState::HELD)
 		{
-			m_owner->m_transform.position.y = m_owner->m_transform.position.y - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
-			//m_owner->m_transform.position.y = m_owner->m_transform.position.y - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			m_owner->m_transform.position.y = m_owner->m_transform.position.y - 1000.0f * m_owner->m_engine->GetTimer().DeltaTime();
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_S) == nc::InputSystem::eButtonState::HELD)
 		{
-			m_owner->m_transform.position.y = m_owner->m_transform.position.y + 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			m_owner->m_transform.position.y = m_owner->m_transform.position.y + 1000.0f * m_owner->m_engine->GetTimer().DeltaTime();
 		}
 
-		//PhysicsComponent* component = m_owner->GetComponent<PhysicsComponent>();
-		//if (component)
-		//{
-			//component->ApplyForce(force);
-		//}
+		RigidBodyComponent* component = m_owner->GetComponent<RigidBodyComponent>();
+		if (component)
+		{
+			component->ApplyForce(force);
+		}
 	}
 }
 

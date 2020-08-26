@@ -3,6 +3,7 @@
 #include "../Engine/Resources/ResourceManager.h"
 #include "../Engine/Core/Timer.h"
 #include "../Engine/Input/InputSystem.h"
+#include "Physics/PhysicsSystem.h"
 #include <vector>
 
 namespace nc
