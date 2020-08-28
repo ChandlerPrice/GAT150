@@ -14,6 +14,7 @@ namespace nc
 			Vector2 size;
 			float density{ 0 };
 			float friction{ 1 };
+			float restitution{ 0.3f };
 			bool lockAngle{ false };
 			bool isDynamic{ false };
 		};

@@ -19,6 +19,7 @@ void nc::RigidBodyComponent::Read(const rapidjson::Value& value)
     nc::json::Get(value, "size", m_data.size);
     nc::json::Get(value, "density", m_data.density);
     nc::json::Get(value, "friction", m_data.friction);
+    nc::json::Get(value, "restitution", m_data.restitution);
 }
 
 void nc::RigidBodyComponent::Update()

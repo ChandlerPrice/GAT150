@@ -34,14 +34,22 @@
          "name":"Ground",
          "position":[
             640,
-            660
+            700
          ],
-         "scale":1,
+         "scale":4.0,
          "angle":0,
          "Components":[
             {
+               "type":"RigidBodyComponent",
+		"isDynamic":false,
+		"lockAngle":true,
+		"size":[600, 26],
+		"density":1.0,
+		"friction":1.0
+            },
+            {
                "type":"SpriteComponent",
-               "texture":"2DMap.png",
+               "texture":"ground.png",
                "origin":[
                   0.5,
                   0.5
@@ -49,8 +57,8 @@
                "rect":[
                   0,
                   0,
-                  800,
-                  32
+                  400,
+                  26
                ]
             }
          ]
@@ -63,14 +71,14 @@
             640,
             360
          ],
-         "scale":1,
+         "scale":0.23,
          "angle":0,
          "Components":[
             {
                "type":"RigidBodyComponent",
 		"isDynamic":true,
 		"lockAngle":true,
-		"size":[16, 32],
+		"size":[70, 70],
 		"density":1.0,
 		"friction":1.0
             },
@@ -79,7 +87,7 @@
             },
             {
                "type":"SpriteComponent",
-               "texture":"player.png",
+               "texture":"Maldad.png",
                "origin":[
                   0.5,
                   0.5
@@ -87,10 +95,17 @@
                "rect":[
                   0,
                   0,
-                  32,
-                  64
+                  350,
+                  400
                ]
-            }
+            },
+            				{
+					"type":"AudioComponent",
+					"sound":"jump.mp3",
+					"playOnAwake": false,
+					"loop": false
+				}
+
          ]
       },
       {

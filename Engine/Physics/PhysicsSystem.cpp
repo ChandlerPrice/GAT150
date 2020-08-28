@@ -3,7 +3,7 @@
 
 bool nc::PhysicsSystem::Startup()
 {
-    b2Vec2 gravity(0, 150);
+    b2Vec2 gravity(0, 100);
     m_world = new b2World{gravity};
 
     return true;
@@ -50,9 +50,10 @@ b2Body* nc::PhysicsSystem::CreateBody(const Vector2& position, const RigidBodyDa
     shape.SetAsBox(data.size.x, data.size.y);
 
     b2FixtureDef fixtureDef;
-    fixtureDef.shape = &shape;
     fixtureDef.density = data.density;
     fixtureDef.friction = data.friction;
+    fixtureDef.restitution = data.restitution;
+    fixtureDef.shape = &shape;
     fixtureDef.userData = gameObject;
 
     body->CreateFixture(&fixtureDef);

@@ -2,6 +2,7 @@
 #include "PlayerComponent.h"
 #include "Components/PhysicsComponent.h"
 #include "Components/RigidBodyComponent.h"
+#include <Components\AudioComponent.h>
 
 namespace nc
 {
@@ -20,37 +21,29 @@ namespace nc
 		nc::Vector2 force{ 0, 0 };
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_LEFT) == nc::InputSystem::eButtonState::HELD)
 		{
-			m_owner->m_transform.position.x = m_owner->m_transform.position.x - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.x = -200000;
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_RIGHT) == nc::InputSystem::eButtonState::HELD)
 		{
-			m_owner->m_transform.position.x = m_owner->m_transform.position.x + 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
-		}
-		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_UP) == nc::InputSystem::eButtonState::HELD)
-		{
-			m_owner->m_transform.position.y = m_owner->m_transform.position.y - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
-		}
-		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_DOWN) == nc::InputSystem::eButtonState::HELD)
-		{
-			m_owner->m_transform.position.y = m_owner->m_transform.position.y + 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.x = 200000;
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_A) == nc::InputSystem::eButtonState::HELD)
 		{
-			force.x = -20000000000;
-			//m_owner->m_transform.position.x = m_owner->m_transform.position.x - 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.x = -200000;
 		}
 		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_D) == nc::InputSystem::eButtonState::HELD)
 		{
-			force.x = 20000000000;
-			//m_owner->m_transform.position.x = m_owner->m_transform.position.x + 100.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.x = 200000;
 		}
-		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_W) == nc::InputSystem::eButtonState::HELD)
+		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_SPACE) == nc::InputSystem::eButtonState::PRESSED)
 		{
-			m_owner->m_transform.position.y = m_owner->m_transform.position.y - 1000.0f * m_owner->m_engine->GetTimer().DeltaTime();
-		}
-		if (m_owner->m_engine->GetSystem<nc::InputSystem>()->GetButtonState(SDL_SCANCODE_S) == nc::InputSystem::eButtonState::HELD)
-		{
-			m_owner->m_transform.position.y = m_owner->m_transform.position.y + 1000.0f * m_owner->m_engine->GetTimer().DeltaTime();
+			force.y = -20000000;
+			AudioComponent* audioComponent = m_owner->GetComponent<AudioComponent>();
+			if (audioComponent)
+			{
+				audioComponent->Play();
+			}
+
 		}
 
 		RigidBodyComponent* component = m_owner->GetComponent<RigidBodyComponent>();
