@@ -4,10 +4,12 @@
 #include "../Engine.h"
 #include <vector>
 #include <bitset>
+#include <list>
 
 namespace nc
 {
 	class Component;
+	class Scene;
 
 	class GameObject : public Object
 	{
@@ -33,6 +35,10 @@ namespace nc
 
 		void Update();
 		void Draw();
+
+		void BeginContact(GameObject* gameObject);
+		void EndContact(GameObject* gameObject);
+		std::vector<GameObject*> GetContactsWithTag(const std::string& tag);
 
 		template<typename T>
 		T* GetComponent()
@@ -62,8 +68,10 @@ namespace nc
 
 		Transform m_transform;
 		Engine* m_engine{nullptr};
+		Scene* m_scene{ nullptr };
 
 	protected:
 		std::vector<Component*> m_components;
+		std::list<GameObject*> m_contacts;
 	};
 }

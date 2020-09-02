@@ -3,12 +3,12 @@
       {
          "type":"GameObject",
          "name":"SparklePro",
-	 "tag":"FX",
-	 "transient":true,
-	 "lifetime":1.5,
+         "tag":"FX",
+         "transient":true,
+         "lifetime":1.5,
          "position":[
-            640,
-            345
+            0,
+            0
          ],
          "scale":1,
          "angle":0,
@@ -19,37 +19,264 @@
                   0.5,
                   0.5
                ],
-               "texture":"sparkle.png",
+               "texture":"Textures/sparkle.png",
                "numX":8,
                "numY":8,
                "numFrames":64,
                "fps":30
             }
          ]
-      }
-   ],
-   "GameObjects":[
+      },
       {
          "type":"GameObject",
-         "name":"Ground",
+         "name":"NukePro",
+         "tag":"powerUp",
+         "transient":false,
+         "lifetime":4.0,
          "position":[
-            640,
-            700
+            100,
+            100
+         ],
+         "scale":1,
+         "angle":0,
+         "Components":[
+            {
+               "type":"SpriteAnimationComponent",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "texture":"Textures/nuke.png",
+               "numX":4,
+               "numY":5,
+               "numFrames":19,
+               "fps":30
+            },
+            {
+               "type":"RigidBodyComponent",
+               "isDynamic":false,
+               "isSensor":true,
+               "lockAngle":true,
+               "size":[
+                  16,
+                  16
+               ],
+               "density":1.0,
+               "friction":1.0
+            }
+         ]
+      },
+            {
+         "type":"GameObject",
+         "name":"EnemyPro",
+         "tag":"Enemy",
+         "transient":false,
+         "position":[
+            100,
+            100
+         ],
+         "scale":4.0,
+         "angle":0,
+         "Components":[
+            {
+               "type":"SpriteAnimationComponent",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "texture":"Textures/enemy.png",
+               "numX":2,
+               "numY":2,
+               "numFrames":4,
+               "fps":4
+            },
+            {
+               "type":"RigidBodyComponent",
+               "isDynamic":true,
+               "isSensor":false,
+               "lockAngle":true,
+               "size":[
+                  32,
+                  32
+               ],
+               "density":1.0,
+               "friction":1.0,
+               "restitution":1.0,
+               "gravityScale":-0.25
+            }
+         ]
+      },
+      {
+         "type":"GameObject",
+         "name":"WallPro",
+         "tag":"Wall",
+                  "lifetime":4.0,
+         "position":[
+            10,
+            17
          ],
          "scale":4.0,
          "angle":0,
          "Components":[
             {
                "type":"RigidBodyComponent",
-		"isDynamic":false,
-		"lockAngle":true,
-		"size":[600, 26],
-		"density":1.0,
-		"friction":1.0
+               "isDynamic":false,
+               "lockAngle":true,
+               "size":[
+                  64,
+                  64
+               ],
+               "density":1.0,
+               "friction":1.0
             },
             {
                "type":"SpriteComponent",
-               "texture":"ground.png",
+               "texture":"Textures/wall.png",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "rect":[
+                  0,
+                  0,
+                  32,
+                  32
+               ]
+            }
+         ]
+      },
+      {
+         "type":"GameObject",
+         "name":"BoxPro",
+         "tag":"Floor",
+         "position":[
+            640,
+            100
+         ],
+         "scale":4.0,
+         "angle":0,
+         "Components":[
+            {
+               "type":"RigidBodyComponent",
+               "isDynamic":true,
+               "lockAngle":false,
+               "size":[
+                  40,
+                  40
+               ],
+               "density":1.0,
+               "friction":1.0,
+               "restitution":0.5
+            },
+            {
+               "type":"SpriteComponent",
+               "texture":"Textures/box.png",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "rect":[
+                  0,
+                  0,
+                  20,
+                  20
+               ]
+            }
+         ]
+      },
+            {
+         "type":"GameObject",
+         "name":"TilePro",
+         "tag":"Floor",
+         "position":[
+            640,
+            100
+         ],
+         "scale":0.251,
+         "angle":0,
+         "Components":[
+            {
+               "type":"RigidBodyComponent",
+               "isDynamic":false,
+               "lockAngle":true,
+               "size":[
+                  45,
+                  45
+               ],
+               "density":1.0,
+               "friction":1.0,
+               "restitution":0.5
+            },
+            {
+               "type":"SpriteComponent",
+               "texture":"Textures/tile.png",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "rect":[
+                  0,
+                  0,
+                  395,
+                  395
+               ]
+            }
+         ]
+      }
+   ],
+   "GameObjects":[
+      "GameObjects",
+      {
+         "type":"GameObject",
+         "name":"Background",
+         "position":[
+            640,
+            360
+         ],
+         "scale":2.0,
+         "angle":0,
+         "Components":[
+            {
+               "type":"SpriteComponent",
+               "texture":"Textures/background.png",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "rect":[
+                  0,
+                  0,
+                  640,
+                  400
+               ]
+            }
+         ]
+      },
+      {
+         "type":"GameObject",
+         "name":"Ground",
+         "tag":"Floor",
+         "position":[
+            19,
+            20
+         ],
+         "scale":4.0,
+         "angle":0,
+         "Components":[
+            {
+               "type":"RigidBodyComponent",
+               "isDynamic":false,
+               "lockAngle":true,
+               "size":[
+                  600,
+                  50
+               ],
+               "density":1.0,
+               "friction":1.0
+            },
+            {
+               "type":"SpriteComponent",
+               "texture":"Textures/ground.png",
                "origin":[
                   0.5,
                   0.5
@@ -65,29 +292,29 @@
       },
       {
          "type":"GameObject",
-         "name":"Player",
-	 "tag":"Player",
+         "name":"Wall",
+         "tag":"Wall",
          "position":[
-            640,
-            360
+            0,
+            17
          ],
-         "scale":0.23,
+         "scale":4.0,
          "angle":0,
          "Components":[
             {
                "type":"RigidBodyComponent",
-		"isDynamic":true,
-		"lockAngle":true,
-		"size":[70, 70],
-		"density":1.0,
-		"friction":1.0
-            },
-            {
-               "type":"PlayerComponent"
+               "isDynamic":false,
+               "lockAngle":true,
+               "size":[
+                  64,
+                  64
+               ],
+               "density":1.0,
+               "friction":1.0
             },
             {
                "type":"SpriteComponent",
-               "texture":"Maldad.png",
+               "texture":"Textures/wall.png",
                "origin":[
                   0.5,
                   0.5
@@ -95,25 +322,97 @@
                "rect":[
                   0,
                   0,
+                  32,
+                  32
+               ]
+            }
+         ]
+      },
+      {
+         "type":"GameObject",
+         "name":"Player",
+         "tag":"Player",
+         "position":[
+            20,
+            17
+         ],
+         "scale":3.0,
+         "angle":0,
+         "Components":[
+            {
+               "type":"RigidBodyComponent",
+               "isDynamic":true,
+               "lockAngle":true,
+               "size":[
+                  32,
+                  32
+               ],
+               "density":1.0,
+               "friction":1.0,
+                              "gravityScale":2.0
+
+            },
+            {
+               "type":"PlayerComponent"
+            },
+                        {
+               "type":"SpriteAnimationComponent",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+                              "rect":[
+                  0,
+                  0,
                   350,
                   400
-               ]
+               ],
+               "texture":"Textures/walk.png",
+               "numX":2,
+               "numY":2,
+               "numFrames":4,
+               "fps":8
             },
-            				{
-					"type":"AudioComponent",
-					"sound":"jump.mp3",
-					"playOnAwake": false,
-					"loop": false
-				}
-
+            {
+               "type":"AudioComponent",
+               "sound":"jump.mp3",
+               "playOnAwake":false,
+               "loop":false
+            },
+                        {
+               "type":"AudioComponent",
+               "sound":"nuke.mp3",
+               "playOnAwake":false,
+               "loop":false
+            },
+                        {
+               "type":"AudioComponent",
+               "sound":"kill.mp3",
+               "playOnAwake":false,
+               "loop":false
+            },
+                        {
+               "type":"SpriteComponent",
+               "texture":"Textures/walk.png",
+               "origin":[
+                  0.5,
+                  0.5
+               ],
+               "rect":[
+                  0,
+                  0,
+                  32,
+                  32
+               ]
+            }
          ]
       },
       {
          "type":"SparklePro",
          "name":"Sparkle",
          "position":[
-            640,
-            445
+            800,
+            300
          ],
          "scale":1,
          "angle":0
